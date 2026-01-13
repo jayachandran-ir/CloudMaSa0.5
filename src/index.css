@@ -1,0 +1,628 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CloudMaSa Design System - Dark theme with navy blue and orange/blue accents */
+
+@layer base {
+  :root {
+    /* CloudMaSa Dark Theme */
+    --background: 220 50% 15%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 50% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 50% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 220 50% 15%;
+
+    --secondary: 220 30% 20%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 30% 20%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 220 30% 20%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 220 50% 30%;
+
+    --radius: 0.5rem;
+
+    /* Brand Colors */
+    --brand-orange: 24 95% 53%;
+    --brand-blue: 217 91% 60%;
+    --brand-navy: 220 50% 15%;
+    --brand-cyan: 187 92% 69%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--brand-blue)), hsl(var(--brand-cyan)));
+    --gradient-cta: linear-gradient(135deg, hsl(0 84% 60%), hsl(var(--brand-orange)));
+    --gradient-text: linear-gradient(90deg, hsl(var(--brand-blue)), hsl(var(--brand-cyan)), hsl(var(--brand-blue)));
+
+    --sidebar-background: 220 50% 10%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 220 50% 15%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 220 30% 20%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 220 30% 20%;
+    --sidebar-ring: 217 91% 60%;
+  }
+
+  .dark {
+    --background: 220 50% 15%;
+    --foreground: 0 0% 98%;
+    --card: 220 50% 12%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 50% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 220 50% 15%;
+    --secondary: 220 30% 20%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 30% 20%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 220 30% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  ::selection {
+    @apply bg-brand-orange text-white;
+  }
+}
+
+@layer utilities {
+  /* Prevent mega menu from causing overflow */
+.mega-menu-container {
+  @apply relative;
+}
+
+.mega-menu-container > div[role="menu"],
+.mega-menu-container .group:hover .invisible {
+  @apply overflow-x-hidden;
+}
+  /* Text Gradients */
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-blue bg-clip-text text-transparent;
+  }
+
+  .text-gradient-brand {
+    background: linear-gradient(90deg, hsl(var(--brand-blue)), hsl(var(--brand-orange)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Button Gradients */
+  .bg-gradient-cta {
+    @apply bg-gradient-to-r from-red-500 to-brand-orange;
+  }
+
+  /* Animations */
+  .animate-loop-scroll {
+    animation: loop-scroll 35s linear infinite;
+  }
+
+  .animate-fade-testimonial {
+    animation: fade-in-out 7s infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* 3D Flip Card */
+  .card-3d {
+    perspective: 1000px;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+  }
+
+  .card-3d:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.5rem;
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+  }
+
+  /* Glass Effect */
+  .glass {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  }
+
+  .glass-strong {
+    @apply bg-[hsl(220,50%,12%)] backdrop-blur-3xl border border-white/50;
+  }
+
+  /* ✅ Persistent White Glow Text */
+  .text-glow-orange {
+    color: hsl(var(--brand-orange));
+    text-shadow:
+      0 0 4px hsl(var(--brand-orange)),
+      0 0 8px hsl(var(--brand-orange)),
+      0 0 12px hsl(var(--brand-orange)),
+      0 0 16px hsla(var(--brand-orange), 0.7);
+  }
+
+  /* Optional: Soft pulsing glow animation */
+  .animate-glow-orange {
+    animation: glow-pulse-orange 2s ease-in-out infinite alternate;
+  }
+
+  /* HOLOGRAPHIC CARDS — CLOUDMASA STYLE */
+  .holographic-card {
+    width: 100%;
+    max-width: 500px;
+    height: 200px;
+    background: linear-gradient(45deg, hsl(var(--card)), hsl(var(--background)));
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 16px;
+    transition: all 0.4s ease;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    cursor: default;
+  }
+
+  .holographic-card:hover {
+    background: linear-gradient(45deg, hsl(var(--card)), hsl(var(--brand-cyan)));
+    transform: scale(1.03);
+    box-shadow: 0 8px 30px hsla(var(--brand-cyan), 0.4);
+  }
+
+  .holographic-card img {
+    width: 100px;
+    height: 150px;
+    object-fit: contain;
+    margin-right: 20px;
+    filter: brightness(0.95);
+    transition: filter 0.3s ease;
+  }
+
+  .holographic-card:hover img {
+    filter: brightness(1.1) drop-shadow(0 0 6px hsl(var(--brand-cyan)));
+  }
+
+  .holographic-card .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .holographic-card h4 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: hsl(var(--brand-orange));
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .holographic-card p {
+    font-size: 0.95rem;
+    color: hsl(var(--foreground));
+    margin: 0;
+    line-height: 1.5;
+    max-width: 250px;
+  }
+}
+
+/* SOCIAL LINKS — CLOUDMASA 3D SOCIAL ICONS */
+.social-links-3d-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0.5rem;
+}
+
+.social-links-3d-wrapper ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 8px;
+  list-style: none;
+}
+
+.social-links-3d-wrapper ul li {
+  margin: 0;
+}
+
+.social-links-3d-wrapper ul li a {
+  text-decoration: none;
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: hsl(220, 50%, 12%);
+  color: hsl(0, 0%, 98%);
+  text-align: center;
+  line-height: 80px;
+  transform: rotate(-30deg) skew(25deg) translate(0, 0);
+  transition: 0.5s;
+  box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid hsl(220, 20%, 20%);
+  font-family: 'Roboto Condensed', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.social-links-3d-wrapper ul li a:before,
+.social-links-3d-wrapper ul li a:after {
+  border-radius: 8px;
+}
+
+.social-links-3d-wrapper ul li a img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  transition: 0.5s;
+}
+
+.social-links-3d-wrapper ul li a:hover img {
+  filter: brightness(1.5) drop-shadow(0 0 4px #fff);
+}
+
+.social-links-3d-wrapper ul li a:before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: -10px;
+  height: 100%;
+  width: 10px;
+  background: hsl(220, 30%, 18%);
+  transform: rotate(0deg) skewY(-45deg);
+  transition: 0.5s;
+}
+
+.social-links-3d-wrapper ul li a:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: -6px;
+  height: 10px;
+  width: 100%;
+  background: hsl(220, 30%, 18%);
+  transform: rotate(0deg) skewX(-45deg);
+  transition: 0.5s;
+}
+
+.social-links-3d-wrapper ul li a:hover {
+  transform: rotate(-30deg) skew(25deg) translate(12px, -8px);
+  box-shadow: -20px 20px 20px rgba(0, 0, 0, 0.7);
+}
+
+/* Brand Hover Colors */
+.social-links-3d-wrapper ul li:hover:nth-child(1) a {
+  background: #3b5998;
+}
+.social-links-3d-wrapper ul li:hover:nth-child(1) a:before {
+  background: #364e8a;
+}
+.social-links-3d-wrapper ul li:hover:nth-child(1) a:after {
+  background: #4a69ad;
+}
+
+.social-links-3d-wrapper ul li:hover:nth-child(2) a {
+  background: #000000;
+}
+.social-links-3d-wrapper ul li:hover:nth-child(2) a:before {
+  background: #000;
+}
+.social-links-3d-wrapper ul li:hover:nth-child(2) a:after {
+  background: #333;
+}
+
+.social-links-3d-wrapper ul li:hover:nth-child(3) a {
+  background: #0077b5;
+}
+.social-links-3d-wrapper ul li:hover:nth-child(3) a:before {
+  background: #005a8c;
+}
+.social-links-3d-wrapper ul li:hover:nth-child(3) a:after {
+  background: #0095e0;
+}
+
+.social-links-3d-wrapper ul li:hover:nth-child(4) a {
+  background: #181717;
+}
+.social-links-3d-wrapper ul li:hover:nth-child(4) a:before {
+  background: #000;
+}
+.social-links-3d-wrapper ul li:hover:nth-child(4) a:after {
+  background: #333;
+}
+
+.social-links-3d-wrapper ul li:hover:nth-child(5) a {
+  background: #ff0000;
+}
+.social-links-3d-wrapper ul li:hover:nth-child(5) a:before {
+  background: #cc0000;
+}
+.social-links-3d-wrapper ul li:hover:nth-child(5) a:after {
+  background: #ff3333;
+}
+
+.social-links-3d-wrapper ul li:hover:nth-child(6) a {
+  background: linear-gradient(45deg, #833AB4, #E1306C, #FD1D1D, #F77737, #FCAF45);
+}
+.social-links-3d-wrapper ul li:hover:nth-child(6) a:before {
+  background: linear-gradient(180deg, #833AB4, #E1306C);
+}
+.social-links-3d-wrapper ul li:hover:nth-child(6) a:after {
+  background: linear-gradient(90deg, #FD1D1D, #FCAF45);
+}
+
+/* Animations */
+@keyframes loop-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes fade-in-out {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  10%, 90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes glow-pulse-orange {
+  from {
+    text-shadow:
+      0 0 4px hsl(var(--brand-orange)),
+      0 0 8px hsl(var(--brand-orange)),
+      0 0 12px hsl(var(--brand-orange)),
+      0 0 16px hsla(var(--brand-orange), 0.7);
+  }
+  to {
+    text-shadow:
+      0 0 6px hsl(var(--brand-orange)),
+      0 0 12px hsl(var(--brand-orange)),
+      0 0 20px hsl(var(--brand-orange)),
+      0 0 28px hsla(var(--brand-orange), 1);
+  }
+}
+/* ===============================
+   SPEED TRUCK ANIMATION (ENHANCED)
+   =============================== */
+
+.loop-wrapper {
+  position: relative;
+  width: 600px;
+  height: 250px;
+  overflow: hidden;
+  border-bottom: 3px solid #00BFFF; /* road line */
+}
+
+/* ===== MOUNTAINS ===== */
+.mountain {
+  position: absolute;
+  right: -1200px;
+  bottom: -40px;
+  width: 4px;
+  height: 4px;
+  box-shadow:
+    0 0 0 90px #2E8FA5,
+    80px 70px 0 110px #2E8FA5,
+    160px 140px 0 90px #2E8FA5,
+    380px 320px 0 100px #2E8FA5,
+    450px 420px 0 110px #2E8FA5;
+  transform: rotate(130deg);
+  opacity: 0.9;
+  animation: mtn 10s linear infinite;
+}
+
+/* ===== HILLS ===== */
+.hill {
+  position: absolute;
+  right: -1000px;
+  bottom: -60px;
+  width: 600px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow:
+  0 0 0 80px rgba(160, 180, 190, 0.35),
+  -120px 0 0 60px rgba(160, 180, 190, 0.30),
+  280px 0 0 80px rgba(160, 180, 190, 0.35),
+  620px 0 0 90px rgba(160, 180, 190, 0.25);
+
+  opacity: 0.85;
+  animation: hill 6s linear infinite;
+}
+
+/* ===== TREES ===== */
+.tree {
+  position: absolute;
+  bottom: 12px;
+  width: 45px;
+  height: 130px;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/130015/tree.svg")
+    no-repeat center / contain;
+
+  /* Green color */
+  filter: brightness(0) saturate(100%)
+    invert(38%) sepia(68%) saturate(620%)
+    hue-rotate(85deg) brightness(95%) contrast(90%);
+
+  animation: tree 6s linear infinite;
+}
+
+
+.tree:nth-child(2) {
+  animation-duration: 7s;
+  opacity: 0.85;
+}
+.tree:nth-child(3) {
+  animation-duration: 6s;
+  opacity: 0.7;
+}
+
+/* ===== ROCKS ===== */
+.rock {
+  position: absolute;
+  bottom: -4px;
+  width: 14px;
+  height: 14px;
+  background: #BFDDE5;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: rock 4.5s linear infinite;
+}
+
+/* ===== TRUCK (UNCHANGED) ===== */
+.truck {
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  width: 85px;
+  height: 60px;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/130015/truck.svg")
+    no-repeat;
+  background-size: contain;
+  animation: truck 4s ease infinite;
+}
+
+.wheels {
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  width: 85px;
+  height: 15px;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/130015/wheels.svg")
+    no-repeat;
+  animation: truck 4s ease infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes tree {
+  to {
+    transform: translateX(-2200px);
+  }
+}
+
+@keyframes rock {
+  to {
+    right: 2200px;
+  }
+}
+
+@keyframes truck {
+  0%,
+  100% {
+  }
+  7% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes mtn {
+  to {
+    transform: translateX(-2200px) rotate(130deg);
+  }
+}
+
+@keyframes hill {
+  to {
+    transform: translateX(-2200px);
+  }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .loop-wrapper {
+    width: 100%;
+    height: 200px;
+  }
+}
+/* ===== Archi ===== */
+@keyframes pulse-line {
+  0% {
+    stroke-dashoffset: 120;
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.6;
+  }
+}
+
+.svg-pulse {
+  stroke-dasharray: 8 6;
+  animation: pulse-line 1.8s linear infinite;
+}
