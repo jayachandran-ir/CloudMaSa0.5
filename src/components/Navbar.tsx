@@ -102,6 +102,13 @@ export function Navbar() {
             >
               DOCUMENTATION
             </Link>
+            {/* ABOUT US */}
+              <Link
+                to="/about"
+                className="hover:text-brand-orange transition-colors uppercase text-foreground"
+              >
+                ABOUT US
+              </Link>
           </div>
         </div>
 
