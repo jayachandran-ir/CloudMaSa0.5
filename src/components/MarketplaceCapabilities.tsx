@@ -57,11 +57,11 @@ export default function MarketplaceCapabilities() {
 
         {/* TITLE */}
         <div className="text-center mb-10">
-          <h2 className="text-2xl font-bold mb-2">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-2">
             <span className="text-gradient-primary">Cloud Marketplace Services</span>{" "}
             <span className="text-white">by CloudMaSa</span>
           </h2>
-          <p className="text-muted-foreground text-sm max-w-xl mx-auto">
+          <p className="text-muted-foreground text-sm sm:text-base max-w-xl mx-auto">
             Unified marketplace procurement and lifecycle management across AWS, Azure, and GCP.
           </p>
         </div>
@@ -82,33 +82,33 @@ export default function MarketplaceCapabilities() {
             ‹
           </button>
 
-          {/* CARD — WIDER & SHORTER */}
+          {/* CARD */}
           <div
-            className="w-[680px] h-[280px]
+            className="w-full sm:w-[600px] md:w-[680px] h-auto sm:h-[280px]
               border border-white/10 bg-[#0f253a]
-              flex items-center gap-6 p-6
-              transition-all duration-500"
+              flex flex-col sm:flex-row items-center gap-4 sm:gap-6
+              p-4 sm:p-6 transition-all duration-500"
           >
             {/* IMAGE SECTION */}
-            <div className="relative w-[160px] h-full flex items-center justify-center shrink-0">
+            <div className="relative w-full sm:w-[160px] h-[180px] sm:h-full flex items-center justify-center shrink-0">
               {/* Glow */}
-              <div className="absolute w-28 h-28 rounded-full blur-2xl bg-[#25c5e6]/30" />
+              <div className="absolute w-24 sm:w-28 h-24 sm:h-28 rounded-full blur-2xl bg-[#25c5e6]/30" />
 
               {/* Image */}
               <img
                 src={activeItem.image}
                 alt={activeItem.title}
-                className="relative w-32 h-32 object-contain z-10"
+                className="relative w-28 sm:w-32 h-28 sm:h-32 object-contain z-10"
               />
             </div>
 
             {/* CONTENT SECTION */}
-            <div className="flex flex-col justify-center text-left h-full">
-              <h3 className="text-lg font-bold text-white mb-2">
+            <div className="flex flex-col justify-center text-left h-full w-full">
+              <h3 className="text-lg sm:text-lg font-bold text-white mb-2">
                 {activeItem.title}
               </h3>
 
-              <p className="text-muted-foreground text-sm mb-3">
+              <p className="text-muted-foreground text-sm mb-2 sm:mb-3">
                 {activeItem.desc}
               </p>
 
@@ -143,7 +143,7 @@ export default function MarketplaceCapabilities() {
             <button
               key={i}
               onClick={() => setActiveIndex(i)}
-              className={`h-2 transition-all ${
+              className={`h-2 transition-all rounded-full ${
                 i === activeIndex
                   ? "bg-brand-orange w-5"
                   : "bg-white/30 w-2"

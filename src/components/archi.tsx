@@ -6,17 +6,11 @@ import { useState, useEffect } from "react"
    🔧 GLOW ANIMATION (WHITE)
 ================================= */
 const glowAnimation = `
-  @keyframes pulseGlow {
-    0% {
-      filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
-    }
-    50% {
-      filter: drop-shadow(0 0 26px rgba(255,255,255,0.9));
-    }
-    100% {
-      filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
-    }
-  }
+@keyframes pulseGlow {
+  0% { filter: drop-shadow(0 0 6px rgba(255,255,255,0.4)); }
+  50% { filter: drop-shadow(0 0 26px rgba(255,255,255,0.9)); }
+  100% { filter: drop-shadow(0 0 6px rgba(255,255,255,0.4)); }
+}
 `
 
 type PillarImageProps = {
@@ -31,15 +25,13 @@ function PillarImage({ title, img, glow }: PillarImageProps) {
       <img
         src={img}
         alt={title}
-        className="transition-all duration-300 cursor-pointer"
+        className="cursor-pointer transition-all duration-300
+                   w-12 sm:w-14 md:w-16 lg:w-[120px]"
         style={{
-          maxWidth: "120px",
-          height: "auto",
           animation: glow ? "pulseGlow 1.6s ease-in-out infinite" : "none",
         }}
       />
-
-      <h4 className="font-semibold text-sm mt-3 text-white text-center">
+      <h4 className="mt-2 text-[10px] sm:text-xs md:text-sm font-semibold text-white text-center max-w-[90px]">
         {title}
       </h4>
     </div>
@@ -54,7 +46,6 @@ export default function WellArchitectedPillars() {
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % 6)
     }, 3500)
-
     return () => clearInterval(interval)
   }, [])
 
@@ -77,120 +68,132 @@ export default function WellArchitectedPillars() {
   ]
 
   return (
-    <section className="py-20 bg-background relative">
+    <section className="relative py-20 bg-background">
       <style>{glowAnimation}</style>
 
       <div className="container mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
         {/* =======================
-           LEFT — DIAGRAM
+           LEFT — RESPONSIVE DIAGRAM
         ======================= */}
-        <div className="relative mx-auto" style={{ width: 480, height: 360 }}>
-          <img
-            src="/src/assets/images/aws.png"
-            alt="AWS Core"
-            onMouseEnter={() => setCoreHover(true)}
-            onMouseLeave={() => setCoreHover(false)}
-            onTouchStart={() => setCoreHover(true)}
-            onTouchEnd={() => setCoreHover(false)}
-            className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all duration-300
-                       hover:drop-shadow-[0_0_60px_rgba(255,255,255,0.9)]"
-            style={{
-              width: 100,
-              left: "50%",
-              top: "50%",
-            }}
-          />
+        <div className="flex justify-center">
+          <div
+            className="
+              relative aspect-[4/3]
+              w-[260px]
+              sm:w-[320px]
+              md:w-[420px]
+              lg:w-[480px]
+            "
+          >
+            {/* cloud CORE */}
+            <img
+              src="/src/assets/images/aws.png"
+              alt="cloud Core"
+              onMouseEnter={() => setCoreHover(true)}
+              onMouseLeave={() => setCoreHover(false)}
+              onTouchStart={() => setCoreHover(true)}
+              onTouchEnd={() => setCoreHover(false)}
+              className="
+                absolute left-1/2 top-1/2
+                -translate-x-1/2 -translate-y-1/2
+                w-12 sm:w-14 md:w-16 lg:w-[100px]
+                cursor-pointer transition-all duration-300
+                hover:drop-shadow-[0_0_60px_rgba(255,255,255,0.9)]
+              "
+            />
 
-          {pillars.map((pillar, i) => (
-            <div
-              key={i}
-              className="absolute -translate-x-1/2 -translate-y-1/2"
-              style={{
-                left: `${cardPos[i].x}%`,
-                top: `${cardPos[i].y}%`,
-              }}
-            >
-              <PillarImage {...pillar} glow={coreHover} />
-            </div>
-          ))}
+            {/* PILLARS */}
+            {pillars.map((pillar, i) => (
+              <div
+                key={i}
+                className="absolute -translate-x-1/2 -translate-y-1/2"
+                style={{
+                  left: `${cardPos[i].x}%`,
+                  top: `${cardPos[i].y}%`,
+                }}
+              >
+                <PillarImage {...pillar} glow={coreHover} />
+              </div>
+            ))}
+          </div>
         </div>
-{/* =======================
-   RIGHT — CONTENT
-======================= */}
-<div>
-  <h2 className="text-2xl font-bold mb-4">
-    <span className="text-gradient-primary">AWS Well-Architected</span>{' '}
-    <span className="text-white">Framework</span>
-  </h2>
 
-  <p className="text-sm text-white/80 leading-relaxed text-justify mb-8">
-    The AWS Well-Architected Framework helps organizations design and operate
-    secure, high-performing cloud architectures using AWS best practices.
-    It is based on six pillars that address operations, security, reliability,
-    performance efficiency, cost optimization, and sustainability. The framework
-    allows teams to review workloads and identify architectural risks. By applying
-    these principles, businesses can build scalable, resilient, and cost-effective
-    solutions on AWS.
-  </p>
+        {/* =======================
+           RIGHT — CONTENT (UNCHANGED)
+        ======================= */}
+        <div>
+          <h2 className="text-2xl font-bold mb-4">
+            <span className="text-gradient-primary">Cloud Well-Architected</span>{" "}
+            <span className="text-white">Framework</span>
+          </h2>
 
-  <div className="relative h-[200px] text-sm text-white/80 leading-relaxed">
+          <p className="text-sm text-white/80 leading-relaxed text-justify mb-8">
+            The cloud Well-Architected Framework helps organizations design and operate
+            secure, high-performing cloud architectures using cloud best practices.
+            It is based on six pillars that address operations, security, reliability,
+            performance efficiency, cost optimization, and sustainability. The framework
+            allows teams to review workloads and identify architectural risks. By applying
+            these principles, businesses can build scalable, resilient, and cost-effective
+            solutions on cloud.
+          </p>
 
-    {[
-      {
-        title: "Operational Efficiency",
-        desc: "Operational Efficiency focuses on running and monitoring systems with minimal manual intervention. It emphasizes automation, streamlined processes, and operational visibility. Teams can quickly detect issues, respond to events, and improve workflows. This pillar enables continuous improvement and faster innovation."
-      },
-      {
-        title: "Security",
-        desc: "Security ensures protection of data, systems, and workloads from threats. It covers identity management, data protection, and secure network controls. Strong security practices help maintain confidentiality, integrity, and compliance. This pillar reduces risk while enabling secure business growth."
-      },
-      {
-        title: "Reliability",
-        desc: "Reliability ensures systems consistently perform their intended functions. It focuses on fault tolerance, disaster recovery, and high availability. Architectures are designed to recover quickly from failures. This pillar supports stable and dependable application performance."
-      },
-      {
-        title: "Performance Efficiency",
-        desc: "Performance Efficiency ensures resources are used effectively to meet demand. It focuses on selecting the right services and architectures. Systems scale automatically to handle workload changes. This pillar delivers optimal speed, responsiveness, and scalability."
-      },
-      {
-        title: "Cost Optimization",
-        desc: "Cost Optimization focuses on controlling spending while maximizing value. It encourages efficient resource usage and elimination of waste. Continuous monitoring helps identify cost-saving opportunities. This pillar ensures cloud investments align with business goals."
-      },
-      {
-        title: "Sustainability",
-        desc: "Sustainability focuses on reducing the environmental impact of cloud workloads. It encourages energy-efficient architectures and optimized resource usage. Design choices help lower carbon footprint over time. This pillar supports responsible and long-term cloud operations."
-      },
-    ].map((pillar, i) => (
-      <div
-        key={i}
-        className={`absolute inset-0 transition-all duration-700 p-2 rounded-lg
-          ${activeIndex === i
-            ? "opacity-100 translate-y-0 bg-black/30 border-l-4 border-orange-400"
-            : "opacity-0 translate-y-3"
-        }`}
-      >
-        <div className="flex items-center gap-3 mb-2">
-          {/* Pulsing dot to indicate looping */}
-          {activeIndex === i && (
-            <span className="w-3 h-3 bg-red-500 rounded-full animate-pulse"
-            style={{
-                filter: "drop-shadow(0 0 6px #ff0000) drop-shadow(0 0 12px #ff0000)",
-                animation: "pulse 3s ease-in-out infinite",}}>              
-            </span>
-          )}
-          <h3 className="text-orange-400 font-semibold">
-            {pillar.title}
-          </h3>
+          {/* ROTATING CONTENT — FULL TEXT PRESERVED */}
+          <div className="relative h-[200px] text-sm text-white/80 leading-relaxed">
+            {[
+              {
+                title: "Operational Efficiency",
+                desc: "Operational Efficiency focuses on running and monitoring systems with minimal manual intervention. It emphasizes automation, streamlined processes, and operational visibility. Teams can quickly detect issues, respond to events, and improve workflows. This pillar enables continuous improvement and faster innovation."
+              },
+              {
+                title: "Security",
+                desc: "Security ensures protection of data, systems, and workloads from threats. It covers identity management, data protection, and secure network controls. Strong security practices help maintain confidentiality, integrity, and compliance. This pillar reduces risk while enabling secure business growth."
+              },
+              {
+                title: "Reliability",
+                desc: "Reliability ensures systems consistently perform their intended functions. It focuses on fault tolerance, disaster recovery, and high availability. Architectures are designed to recover quickly from failures. This pillar supports stable and dependable application performance."
+              },
+              {
+                title: "Performance Efficiency",
+                desc: "Performance Efficiency ensures resources are used effectively to meet demand. It focuses on selecting the right services and architectures. Systems scale automatically to handle workload changes. This pillar delivers optimal speed, responsiveness, and scalability."
+              },
+              {
+                title: "Cost Optimization",
+                desc: "Cost Optimization focuses on controlling spending while maximizing value. It encourages efficient resource usage and elimination of waste. Continuous monitoring helps identify cost-saving opportunities. This pillar ensures cloud investments align with business goals."
+              },
+              {
+                title: "Sustainability",
+                desc: "Sustainability focuses on reducing the environmental impact of cloud workloads. It encourages energy-efficient architectures and optimized resource usage. Design choices help lower carbon footprint over time. This pillar supports responsible and long-term cloud operations."
+              },
+            ].map((pillar, i) => (
+              <div
+                key={i}
+                className={`absolute inset-0 p-2 rounded-lg transition-all duration-700
+                  ${
+                    activeIndex === i
+                      ? "opacity-100 translate-y-0 bg-black/30 border-l-4 border-orange-400"
+                      : "opacity-0 translate-y-3"
+                  }`}
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  {activeIndex === i && (
+                    <span
+                      className="w-3 h-3 bg-red-500 rounded-full animate-pulse"
+                      style={{
+                        filter:
+                          "drop-shadow(0 0 6px #ff0000) drop-shadow(0 0 12px #ff0000)",
+                      }}
+                    />
+                  )}
+                  <h3 className="text-orange-400 font-semibold">
+                    {pillar.title}
+                  </h3>
+                </div>
+                <p className="text-justify">{pillar.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        <p className="text-justify">{pillar.desc}</p>
-      </div>
-    ))}
-
-  </div>
-</div>
-
-
       </div>
     </section>
   )

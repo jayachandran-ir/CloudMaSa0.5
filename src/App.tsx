@@ -16,6 +16,8 @@ import WellArchitected from "./pages/well-architected";
 import AwsSecurityPage from "./pages/aws-security";
 import AwsSurveillancePage from "./pages/aws-surveillance";
 import CloudMarketplacePage from "./pages/cloud-marketplace";
+import AboutUS from "./pages/AboutUS";
+import ContactUs from "./pages/contact-us"; // ✅ ADDED
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,12 +36,12 @@ export default function App() {
               <Route path="/" element={<Index />} />
 
               <Route
-                path="/aws-cost-optimization"
+                path="/cloud-cost-optimization"
                 element={<AwsCostOptimizationPage />}
               />
 
               <Route
-                path="/aws-migration"
+                path="/cloud-migration"
                 element={<AwsMigrationPage />}
               />
 
@@ -49,19 +51,30 @@ export default function App() {
               />
 
               <Route
-                path="/aws-security"
+                path="/cloud-security"
                 element={<AwsSecurityPage />}
               />
 
               <Route
-                path="/aws-surveillance"
+                path="/cloud-surveillance"
                 element={<AwsSurveillancePage />}
               />
 
-              
               <Route
                 path="/cloud-marketplace"
                 element={<CloudMarketplacePage />}
+              />
+
+              {/* ✅ ABOUT US PAGE */}
+              <Route
+                path="/about-us"
+                element={<AboutUS />}
+              />
+
+              {/* ✅ CONTACT US PAGE */}
+              <Route
+                path="/contact"
+                element={<ContactUs />}
               />
 
               <Route path="*" element={<NotFound />} />
