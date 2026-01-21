@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
 const SERVICES_DATA = [
   {
     title: "CLOUD COST OPTIMIZATION",
-    description: "Squeeze the best performance out of your AWS infrastructure for less money",
+    description: "Squeeze the best performance out of your Cloud infrastructure for less money",
     icon: BarChart,
     path: "/cloud-cost-optimization",
   },
@@ -49,8 +49,8 @@ const SERVICES_DATA = [
     path: "/cloud-security",
   },
   {
-    title: "AWS MARKETPLACE",
-    description: "Access the best tools for your use case via the AWS Marketplace",
+    title: "Cloud MARKETPLACE",
+    description: "Access the best tools for your use case via the Cloud Marketplace",
     icon: ShoppingBag,
     path: "/cloud-marketplace",
   },
@@ -63,22 +63,22 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 w-full z-50 border-b border-white/10 bg-background/80 backdrop-blur-2xl">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          {/* LEFT: Logo + Desktop Links */}
-          <div className="flex items-center gap-8">
-            <Link to="/" className="flex items-center gap-0.5">
-              {/* ROUND LOGO */}
-              <img
-                src="/src/assets/companylogo/roundmasa.webp"
-                alt="CloudMaSa Logo"
-                className="w-14 h-14 rounded-full object-cover"
-              />
+        {/* LEFT: Logo + Desktop Links */}
+        <div className="flex items-center gap-8">
+          <Link to="/" className="flex items-center gap-0.5">
+            {/* ROUND LOGO */}
+            <img
+              src="/companylogo/roundmasa.webp"
+              alt="CloudMaSa Logo"
+              className="w-14 h-14 rounded-full object-cover"
+            />
 
-              {/* TEXT LOGO */}
-              <span className="font-extrabold text-lg tracking-tight leading-none">
-                <span className="text-blue-400">Cloud</span>
-                <span className="text-brand-orange">MaSa</span>
-              </span>
-            </Link>
+            {/* TEXT LOGO */}
+            <span className="font-extrabold text-lg tracking-tight leading-none">
+              <span className="text-blue-400">Cloud</span>
+              <span className="text-brand-orange">MaSa</span>
+            </span>
+          </Link>
 
           {/* DESKTOP NAV */}
           <div className="hidden lg:flex items-center gap-6 text-[11px] font-bold uppercase tracking-wider">
@@ -121,9 +121,12 @@ export function Navbar() {
             CONTACT US
           </Link>
 
-          <Button className="hidden lg:flex bg-gradient-cta text-white rounded-full px-5 py-4 text-[12px]">
-            Free Consultation
-          </Button>
+          {/* ✅ DESKTOP FREE CONSULTATION */}
+          <Link to="/free-consultation">
+            <Button className="hidden lg:flex bg-gradient-cta text-white rounded-full px-5 py-4 text-[12px]">
+              Free Consultation
+            </Button>
+          </Link>
 
           {/* MOBILE TOGGLE */}
           <button
@@ -199,9 +202,12 @@ export function Navbar() {
             CONTACT US
           </Link>
 
-          <Button className="mt-3 bg-gradient-cta text-white">
-            Free Consultation
-          </Button>
+          {/* ✅ MOBILE FREE CONSULTATION */}
+          <Link to="/free-consultation" onClick={() => setMobileMenuOpen(false)}>
+            <Button className="mt-3 bg-gradient-cta text-white">
+              Free Consultation
+            </Button>
+          </Link>
         </div>
       </div>
     </nav>

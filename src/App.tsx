@@ -17,7 +17,8 @@ import AwsSecurityPage from "./pages/aws-security";
 import AwsSurveillancePage from "./pages/aws-surveillance";
 import CloudMarketplacePage from "./pages/cloud-marketplace";
 import AboutUS from "./pages/AboutUS";
-import ContactUs from "./pages/contact-us"; // ✅ ADDED
+import ContactUs from "./pages/contact-us";
+import FreeConsultation from "./pages/free-consultation"; 
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -75,6 +76,12 @@ export default function App() {
               <Route
                 path="/contact"
                 element={<ContactUs />}
+              />
+
+              {/* ✅ FREE CONSULTATION PAGE */}
+              <Route
+                path="/free-consultation"
+                element={<FreeConsultation />}
               />
 
               <Route path="*" element={<NotFound />} />

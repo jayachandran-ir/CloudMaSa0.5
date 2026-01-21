@@ -86,8 +86,10 @@ export default function ContactUs() {
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="bg-card/70 backdrop-blur-md border border-white/10 rounded-2xl p-4 sm:p-5 lg:p-6 w-full"
           >
-            <h2 className="text-3xl font-extrabold mb-5 lg:mb-6 text-white text-center lg:text-left">
-              Let us connect!
+            
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-5 lg:mb-6 text-center lg:text-left">
+                  <span className="text-gradient-primary">Let us</span>{' '}
+                  <span className="text-white">connect!</span>
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">

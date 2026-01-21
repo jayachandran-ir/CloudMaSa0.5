@@ -43,9 +43,10 @@ const SocialLinks3D: React.FC = () => {
           <li key={index}>
             <a href={social.href} target="_blank" rel="noopener noreferrer">
               <img 
-                src={`/src/assets/icons/${social.icon}.png`} 
+                src={`/icons/${social.icon}.png`} 
                 alt={social.name} 
-                className="w-5 h-5 object-contain"
+                className="w-2 h-2 sm:w-3 sm:h-3 object-contain"
+
               />
             </a>
           </li>

@@ -49,7 +49,7 @@ export default function AwsMigrationPage() {
               {/* IMAGE */}
               <div className="order-1 lg:order-2 flex justify-center p-3">
                 <img
-                  src="/src/assets/images/awsmig1.png"
+                  src="/images/awsmig1.png"
                   alt="cloud Migration Architecture"
                   className="w-full max-h-[260px] sm:max-h-[300px] md:max-h-[340px] object-contain drop-shadow-[0_0_10px_rgba(37,197,230,0.4)]"
                 />
@@ -141,7 +141,7 @@ export default function AwsMigrationPage() {
             {/* RIGHT SIDE */}
             <div className="flex flex-col justify-center items-center text-center">
               <img
-                src="/src/assets/images/awsmig2.png"
+                src="/images/awsmig2.png"
                 alt="cloud Migration Flow"
                 className="w-full max-w-sm h-[350px] object-contain drop-shadow-[0_0_10px_rgba(37,197,230,0.4)]"
               />
@@ -169,7 +169,7 @@ export default function AwsMigrationPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="holographic-card">
-              <img src="/src/assets/images/scalable.png" alt="Scalability" />
+              <img src="/images/scalable.png" alt="Scalability" />
               <div className="content">
                 <h4 className="text-base font-bold">Elastic Scalability</h4>
                 <p className="text-muted-foreground text-sm">
@@ -180,7 +180,7 @@ export default function AwsMigrationPage() {
             </div>
 
             <div className="holographic-card">
-              <img src="/src/assets/images/security.png" alt="Security" />
+              <img src="/images/security.png" alt="Security" />
               <div className="content">
                 <h4 className="text-base font-bold">Improved Security</h4>
                 <p className="text-muted-foreground text-sm">
@@ -191,7 +191,7 @@ export default function AwsMigrationPage() {
             </div>
 
             <div className="holographic-card">
-              <img src="/src/assets/images/modernize.png" alt="Modernization" />
+              <img src="/images/modernize.png" alt="Modernization" />
               <div className="content">
                 <h4 className="text-base font-bold">Application Modernization</h4>
                 <p className="text-muted-foreground text-sm">

@@ -53,6 +53,7 @@ export function Testimonials() {
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
+
         {/* Header */}
         <div className="text-center mb-10">
           <span className="text-brand-orange font-bold uppercase tracking-widest text-[10px] mb-2 block">
@@ -69,6 +70,7 @@ export function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div key={index} className="card-3d h-[260px]">
               <div className="card-inner">
+
                 {/* FRONT */}
                 <div className="card-front glass p-4 flex flex-col items-center text-center">
 
@@ -76,12 +78,12 @@ export function Testimonials() {
                   <div className="h-[72px] flex items-center justify-center mb-2">
                     <div className="w-16 h-16 bg-white rounded-full p-1 border border-white/20">
                       <img
-                        src={`/src/assets/avatars/${testimonial.avatar}.png`}
+                        src={`/avatars/${testimonial.avatar}.png`}
                         alt={testimonial.name}
                         className="w-full h-full rounded-full object-cover"
                         onError={(e) => {
                           (e.currentTarget as HTMLImageElement).src =
-                            "/src/assets/icons/user-placeholder.png";
+                            "/icons/user-placeholder.png";
                         }}
                       />
                     </div>
@@ -101,12 +103,12 @@ export function Testimonials() {
                     </p>
                   </div>
 
-                  {/* Company Logo — WHITE BACKGROUND ALWAYS */}
+                  {/* Company Logo */}
                   <div className="h-[36px] flex items-center justify-center mt-2">
                     {testimonial.companylogo ? (
                       <div className="bg-white p-1 rounded-md border border-black/10 shadow-sm">
                         <img
-                          src={`/src/assets/companylogo/${testimonial.companylogo}`}
+                          src={`/companylogo/${testimonial.companylogo}`}
                           alt="Company logo"
                           className="h-7 w-auto object-contain"
                         />
@@ -123,6 +125,7 @@ export function Testimonials() {
                     “{testimonial.text}”
                   </p>
                 </div>
+
               </div>
             </div>
           ))}

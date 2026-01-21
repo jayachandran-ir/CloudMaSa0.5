@@ -50,7 +50,7 @@ export default function AwsSecurityPage() {
               {/* IMAGE */}
               <div className="order-1 lg:order-2 flex justify-center p-3">
                 <img
-                  src="/src/assets/images/awssecurity1.png"
+                  src="/images/awssecurity1.png"
                   alt="Cloud Security Architecture"
                   className="w-full max-h-[260px] sm:max-h-[300px] md:max-h-[340px] object-contain drop-shadow-[0_0_10px_rgba(37,197,230,0.4)]"
                 />
@@ -142,7 +142,7 @@ export default function AwsSecurityPage() {
 
           hover:border-brand-orange/40 transition-all hover:-translate-y-1">
           <img
-            src="/src/assets/images/account.png"
+            src="s/images/account.png"
             alt="Account-Level Security"
             className="w-25 h-20 mb-4 mx-auto"
           />
@@ -160,7 +160,7 @@ export default function AwsSecurityPage() {
 
           hover:border-brand-orange/40 transition-all hover:-translate-y-1">
           <img
-            src="/src/assets/images/network.png"
+            src="/images/network.png"
             alt="Network-Level Security"
             className="w-25 h-20 mb-4 mx-auto"
           />
@@ -178,7 +178,7 @@ export default function AwsSecurityPage() {
 
           hover:border-brand-orange/40 transition-all hover:-translate-y-1">
           <img
-            src="/src/assets/images/data.png"
+            src="/images/data.png"
             alt="Data Security and Resiliency"
             className="w-25 h-20 mb-4 mx-auto"
           />
@@ -196,7 +196,7 @@ export default function AwsSecurityPage() {
 
           hover:border-brand-orange/40 transition-all hover:-translate-y-1">
           <img
-            src="/src/assets/images/eks.png"
+            src="/images/eks.png"
             alt="Cloud EKS Threat Detection"
             className="w-25 h-20 mb-4 mx-auto"
           />
@@ -227,7 +227,7 @@ export default function AwsSecurityPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="holographic-card">
-              <img src="/src/assets/images/secur.png" alt="Threat Prevention" />
+              <img src="/images/secur.png" alt="Threat Prevention" />
               <div className="content">
                 <h4 className="text-base font-bold">Threat Prevention</h4>
                 <p className="text-muted-foreground text-sm">
@@ -238,7 +238,7 @@ export default function AwsSecurityPage() {
             </div>
 
             <div className="holographic-card">
-              <img src="/src/assets/images/comp.png" alt="Compliance Readiness" />
+              <img src="/images/comp.png" alt="Compliance Readiness" />
               <div className="content">
                 <h4 className="text-base font-bold">Compliance Readiness</h4>
                 <p className="text-muted-foreground text-sm">
@@ -249,7 +249,7 @@ export default function AwsSecurityPage() {
             </div>
 
             <div className="holographic-card">
-              <img src="/src/assets/images/vi.png" alt="Security Visibility" />
+              <img src="/images/vi.png" alt="Security Visibility" />
               <div className="content">
                 <h4 className="text-base font-bold">Improved Visibility</h4>
                 <p className="text-muted-foreground text-sm">

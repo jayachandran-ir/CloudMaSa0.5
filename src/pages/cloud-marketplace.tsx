@@ -50,7 +50,7 @@ export default function CloudMarketplacePage() {
               {/* IMAGE */}
               <div className="order-1 lg:order-2 flex justify-center p-3">
                 <img
-                  src="/src/assets/images/cloudmarketplace.png"
+                  src="/images/cloudmarketplace.png"
                   alt="Cloud Marketplace"
                   className="w-full max-h-[260px] sm:max-h-[300px] md:max-h-[340px] object-contain drop-shadow-[0_0_10px_rgba(37,197,230,0.4)]"
                 />

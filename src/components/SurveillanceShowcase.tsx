@@ -13,28 +13,28 @@ const pillarData = [
     title: "Infrastructure Monitoring",
     desc:
       "Monitor EC2, load balancers, storage, and networking components to ensure availability and performance.",
-    img: "/src/assets/images/infra.png",
+    img: "/images/infra.png",
     icon: Server,
   },
   {
     title: "Application Observability",
     desc:
       "Gain deep insights into application behavior using logs, metrics, and distributed tracing.",
-    img: "/src/assets/images/ap.png",
+    img: "/images/ap.png",
     icon: Eye,
   },
   {
     title: "Intelligent Alerting",
     desc:
       "Smart alerts reduce noise and notify teams only when action is required.",
-    img: "/src/assets/images/altering.png",
+    img: "/images/altering.png",
     icon: BellRing,
   },
   {
     title: "Incident Visibility",
     desc:
       "Detect incidents early, correlate signals, and accelerate root cause analysis.",
-    img: "/src/assets/images/inc.png",
+    img: "/images/inc.png",
     icon: Radar,
   },
 ];

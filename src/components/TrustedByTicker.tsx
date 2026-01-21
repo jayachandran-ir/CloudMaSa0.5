@@ -58,11 +58,11 @@ const TrustedByTicker = () => {
           className="flex whitespace-nowrap"
           style={{ gap: `${gap}px`, width: 'max-content' }}
         >
-          <LogoItem src="/src/assets/companylogo/cloudace.jpg" alt="CloudAce Technologies" />
-          <LogoItem src="/src/assets/companylogo/cryptologo.png" alt="Crypto24x7" />
-          <LogoItem src="/src/assets/companylogo/telcomet.jpg" alt="Telcomet" />
-          <LogoItem src="/src/assets/companylogo/dusktech.jpg" alt="DuskTech" />
-          <LogoItem src="/src/assets/companylogo/alan.png" alt="Alan" />
+          <LogoItem src="/companylogo/cloudace.jpg" alt="CloudAce Technologies" />
+          <LogoItem src="/companylogo/cryptologo.png" alt="Crypto24x7" />
+          <LogoItem src="/companylogo/telcomet.jpg" alt="Telcomet" />
+          <LogoItem src="/companylogo/dusktech.jpg" alt="DuskTech" />
+          <LogoItem src="/companylogo/alan.png" alt="Alan" />
         </div>
       </div>
     </div>

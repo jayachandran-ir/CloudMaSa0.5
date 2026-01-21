@@ -50,12 +50,12 @@ export default function WellArchitectedPillars() {
   }, [])
 
   const pillars = [
-    { title: "Operational Efficiency", img: "/src/assets/images/operation.png" },
-    { title: "Security", img: "/src/assets/images/sec.png" },
-    { title: "Reliability", img: "/src/assets/images/reli.png" },
-    { title: "Performance Efficiency", img: "/src/assets/images/perfo.png" },
-    { title: "Cost Optimization", img: "/src/assets/images/cost.png" },
-    { title: "Sustainability", img: "/src/assets/images/sus.png" },
+    { title: "Operational Efficiency", img: "/images/operation.png" },
+    { title: "Security", img: "/images/sec.png" },
+    { title: "Reliability", img: "/images/reli.png" },
+    { title: "Performance Efficiency", img: "/images/perfo.png" },
+    { title: "Cost Optimization", img: "/images/cost.png" },
+    { title: "Sustainability", img: "/images/sus.png" },
   ]
 
   const cardPos = [
@@ -88,7 +88,7 @@ export default function WellArchitectedPillars() {
           >
             {/* cloud CORE */}
             <img
-              src="/src/assets/images/aws.png"
+              src="/images/aws.png"
               alt="cloud Core"
               onMouseEnter={() => setCoreHover(true)}
               onMouseLeave={() => setCoreHover(false)}

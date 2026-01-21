@@ -4,11 +4,6 @@ import { Footer } from "@/components/Footer";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 
-/* ✅ IMAGE IMPORTS (CRITICAL FIX) */
-import whoWeAreImg from "@/assets/images/13569.jpg";
-import visionImg from "@/assets/images/139704.jpg";
-import teamImg from "@/assets/images/397057724_11539820.png";
-
 export default function AboutUS() {
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-background text-foreground">
@@ -16,11 +11,17 @@ export default function AboutUS() {
 
       <main>
         {/* ================= HERO ================= */}
-        <section className="relative overflow-hidden py-8 sm:py-10 md:py-12 lg:py-16">
+        <section className="relative overflow-hidden pt-20 pb-8 sm:pt-24 sm:pb-10 md:pt-0 md:py-12 lg:py-16 min-h-[50vh]">
+
+          {/* Background */}
           <div className="absolute inset-0 z-0">
             <AnimatedBackground />
+
+            {/* ✅ FIX: subtle contrast overlay (keeps animation) */}
+            <div className="absolute inset-0 bg-black/30" />
           </div>
 
+          {/* Content */}
           <div className="relative z-10 container mx-auto px-4 max-w-[1024px] text-center">
             <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">
               <span className="text-gradient-primary">About</span>{" "}
@@ -37,10 +38,8 @@ export default function AboutUS() {
 
         {/* ================= WHO WE ARE ================= */}
         <section className="py-10 sm:py-12 md:py-16">
-          <div className="container mx-auto px-4 max-w-[1200px]
-            grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="container mx-auto px-4 max-w-[1200px] grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-            {/* TEXT */}
             <div className="space-y-4">
               <h2 className="text-lg sm:text-xl md:text-2xl font-bold">
                 <span className="text-gradient-primary">Who</span>{" "}
@@ -58,10 +57,9 @@ export default function AboutUS() {
               </p>
             </div>
 
-            {/* IMAGE */}
             <div className="w-full max-h-[320px] rounded-xl overflow-hidden border border-white/10">
               <img
-                src={whoWeAreImg}
+                src="/images/13569.jpg"
                 alt="Cloud Operations"
                 className="w-full h-full object-cover"
               />
@@ -71,19 +69,16 @@ export default function AboutUS() {
 
         {/* ================= OUR VISION ================= */}
         <section className="py-10 sm:py-12 md:py-16 bg-muted/5">
-          <div className="container mx-auto px-4 max-w-[1200px]
-            grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="container mx-auto px-4 max-w-[1200px] grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-            {/* IMAGE */}
             <div className="w-full max-h-[320px] rounded-xl overflow-hidden border border-white/10">
               <img
-                src={visionImg}
+                src="/images/139704.jpg"
                 alt="Our Vision"
                 className="w-full h-full object-cover"
               />
             </div>
 
-            {/* CONTENT */}
             <div className="space-y-6">
               <h2 className="text-lg sm:text-xl md:text-2xl font-bold">
                 <span className="text-gradient-primary">Our</span>{" "}
@@ -118,7 +113,7 @@ export default function AboutUS() {
 
         {/* ================= CORE VALUES ================= */}
         <section className="py-10 sm:py-12 md:py-16">
-          <div className="container mx-auto px-4 max-w-[1200px]">
+          <div className="container mx-auto px-4">
 
             <div className="text-center mb-10">
               <h2 className="text-lg sm:text-xl md:text-2xl font-bold">
@@ -186,7 +181,7 @@ export default function AboutUS() {
                   <div className="relative rounded-xl overflow-hidden max-h-[260px]">
                     <div className="absolute inset-0 bg-gradient-to-t from-blue-500/60 to-transparent z-10" />
                     <img
-                      src={teamImg}
+                      src="/images/397057724_11539820.png"
                       alt={name}
                       className="w-full h-full object-cover"
                     />
