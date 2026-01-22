@@ -9,8 +9,9 @@ export function CloudMasaApp() {
     "Seamless Cloud Migration",
   ];
 
-  return (
-    <section className="py-20 bg-white/5 border-y border-white/10">
+  return ( 
+    <section id="cloudmasa-app" 
+      className="py-20 bg-white/5 border-y border-white/10">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-5">

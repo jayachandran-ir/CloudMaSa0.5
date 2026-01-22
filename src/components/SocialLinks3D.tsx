@@ -5,6 +5,16 @@ import React from 'react';
 const SocialLinks3D: React.FC = () => {
   const socials = [
     { 
+      name: 'YouTube', 
+      icon: 'youtube', 
+      href: 'https://www.youtube.com/@CloudMaSa_Technologies'
+    },
+    { 
+      name: 'Instagram', 
+      icon: 'instagram', 
+      href: 'https://www.instagram.com/cloudmasa_technology/'
+    },
+    { 
       name: 'Facebook', 
       icon: 'facebook', 
       href: 'https://www.facebook.com/people/CloudMasa-T/pfbid02ZtwTkAL9eUgojZqufH5P3yozccK1bVNmrGowNiWxD6x2Yf3QWdn4nSZB9Nhuattbl/'
@@ -23,17 +33,7 @@ const SocialLinks3D: React.FC = () => {
       name: 'GitHub', 
       icon: 'github', 
       href: 'https://github.com/CloudMasa-Tech'
-    },
-    { 
-      name: 'YouTube', 
-      icon: 'youtube', 
-      href: 'https://www.youtube.com/@CloudMaSa_Technologies'
-    },
-    { 
-      name: 'Instagram', 
-      icon: 'instagram', 
-      href: 'https://www.instagram.com/cloudmasa_technology/'
-    },
+    },    
   ];
 
   return (

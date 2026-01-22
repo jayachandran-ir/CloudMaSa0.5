@@ -25,16 +25,13 @@ const Index = () => {
 
       <StatsGrid />
 
-
-      <HostingFeatures />
-
-      
+      <CloudMasaApp />
 
       <Testimonials />
 
       <FeatureSection />
 
-      <CloudMasaApp />
+      <HostingFeatures />
 
       <Footer />
     </main>

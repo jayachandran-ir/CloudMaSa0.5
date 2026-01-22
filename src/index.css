@@ -346,33 +346,33 @@
 }
 
 /* Brand Hover Colors */
-.social-links-3d-wrapper ul li:hover:nth-child(1) a {
+.social-links-3d-wrapper ul li:hover:nth-child(3) a {
   background: #3b5998;
 }
-.social-links-3d-wrapper ul li:hover:nth-child(1) a:before {
+.social-links-3d-wrapper ul li:hover:nth-child(3) a:before {
   background: #364e8a;
 }
-.social-links-3d-wrapper ul li:hover:nth-child(1) a:after {
+.social-links-3d-wrapper ul li:hover:nth-child(3) a:after {
   background: #4a69ad;
 }
 
-.social-links-3d-wrapper ul li:hover:nth-child(2) a {
+.social-links-3d-wrapper ul li:hover:nth-child(4) a {
   background: #000000;
 }
-.social-links-3d-wrapper ul li:hover:nth-child(2) a:before {
+.social-links-3d-wrapper ul li:hover:nth-child(4) a:before {
   background: #000;
 }
-.social-links-3d-wrapper ul li:hover:nth-child(2) a:after {
+.social-links-3d-wrapper ul li:hover:nth-child(4) a:after {
   background: #333;
 }
 
-.social-links-3d-wrapper ul li:hover:nth-child(3) a {
+.social-links-3d-wrapper ul li:hover:nth-child(5) a {
   background: #0077b5;
 }
-.social-links-3d-wrapper ul li:hover:nth-child(3) a:before {
+.social-links-3d-wrapper ul li:hover:nth-child(5) a:before {
   background: #005a8c;
 }
-.social-links-3d-wrapper ul li:hover:nth-child(3) a:after {
+.social-links-3d-wrapper ul li:hover:nth-child(5) a:after {
   background: #0095e0;
 }
 
@@ -386,23 +386,23 @@
   background: #333;
 }
 
-.social-links-3d-wrapper ul li:hover:nth-child(5) a {
+.social-links-3d-wrapper ul li:hover:nth-child(1) a {
   background: #ff0000;
 }
-.social-links-3d-wrapper ul li:hover:nth-child(5) a:before {
+.social-links-3d-wrapper ul li:hover:nth-child(1) a:before {
   background: #cc0000;
 }
-.social-links-3d-wrapper ul li:hover:nth-child(5) a:after {
+.social-links-3d-wrapper ul li:hover:nth-child(1) a:after {
   background: #ff3333;
 }
 
-.social-links-3d-wrapper ul li:hover:nth-child(6) a {
+.social-links-3d-wrapper ul li:hover:nth-child(2) a {
   background: linear-gradient(45deg, #833AB4, #E1306C, #FD1D1D, #F77737, #FCAF45);
 }
-.social-links-3d-wrapper ul li:hover:nth-child(6) a:before {
+.social-links-3d-wrapper ul li:hover:nth-child(2) a:before {
   background: linear-gradient(180deg, #833AB4, #E1306C);
 }
-.social-links-3d-wrapper ul li:hover:nth-child(6) a:after {
+.social-links-3d-wrapper ul li:hover:nth-child(2) a:after {
   background: linear-gradient(90deg, #FD1D1D, #FCAF45);
 }
 
@@ -626,3 +626,163 @@
   stroke-dasharray: 8 6;
   animation: pulse-line 1.8s linear infinite;
 }
+        /* Rocket bounce while idle */
+/* Rocket bounce while idle */  
+            @keyframes bounce-rocket {
+          0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+          40% { transform: translateY(-8px); }
+          60% { transform: translateY(-4px); }
+        }
+        .animate-bounce-rocket {
+          animation: bounce-rocket 1.5s infinite;
+        }
+
+        /* Flame animation */
+        @keyframes flame {
+          0%, 100% { transform: scaleY(1); opacity: 0.9; }
+          50% { transform: scaleY(1.2); opacity: 1; }
+        }
+        .animate-flame {
+          animation: flame 0.3s infinite;
+          transform-origin: center top;
+        }
+
+        /* Intense flame during launch */
+        @keyframes flame-intense {
+          0%, 100% { transform: scaleY(1.5) scaleX(1.2); opacity: 1; }
+          25% { transform: scaleY(2) scaleX(0.8); opacity: 1; }
+          50% { transform: scaleY(1.8) scaleX(1.3); opacity: 1; }
+          75% { transform: scaleY(2.2) scaleX(0.9); opacity: 1; }
+        }
+        .animate-flame-intense {
+          animation: flame-intense 0.15s infinite;
+          transform-origin: center top;
+        }
+
+        /* Zig-zag rocket launch */
+        @keyframes rocket-zigzag {
+          0% { 
+            transform: translateY(0) translateX(0) rotate(0deg) scale(1); 
+            opacity: 1; 
+          }
+          10% { 
+            transform: translateY(-30px) translateX(15px) rotate(15deg) scale(1.05); 
+            opacity: 1; 
+          }
+          20% { 
+            transform: translateY(-80px) translateX(-20px) rotate(-20deg) scale(1.1); 
+            opacity: 1; 
+          }
+          30% { 
+            transform: translateY(-150px) translateX(25px) rotate(25deg) scale(1.05); 
+            opacity: 1; 
+          }
+          40% { 
+            transform: translateY(-230px) translateX(-30px) rotate(-30deg) scale(1); 
+            opacity: 1; 
+          }
+          50% { 
+            transform: translateY(-320px) translateX(20px) rotate(20deg) scale(0.95); 
+            opacity: 0.9; 
+          }
+          60% { 
+            transform: translateY(-420px) translateX(-25px) rotate(-25deg) scale(0.85); 
+            opacity: 0.8; 
+          }
+          70% { 
+            transform: translateY(-530px) translateX(15px) rotate(15deg) scale(0.7); 
+            opacity: 0.6; 
+          }
+          80% { 
+            transform: translateY(-650px) translateX(-10px) rotate(-10deg) scale(0.5); 
+            opacity: 0.4; 
+          }
+          90% { 
+            transform: translateY(-780px) translateX(5px) rotate(5deg) scale(0.3); 
+            opacity: 0.2; 
+          }
+          100% { 
+            transform: translateY(-900px) translateX(0) rotate(0deg) scale(0.1); 
+            opacity: 0; 
+          }
+        }
+        .animate-rocket-zigzag {
+          animation: rocket-zigzag 2s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Smoke particles */
+        .smoke-particle {
+          position: absolute;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(200,200,200,0.4) 50%, transparent 100%);
+          animation: smoke-rise 0.8s infinite;
+        }
+        .smoke-1 {
+          width: 12px;
+          height: 12px;
+          animation-delay: 0s;
+        }
+        .smoke-2 {
+          width: 16px;
+          height: 16px;
+          animation-delay: 0.15s;
+          top: 10px;
+        }
+        .smoke-3 {
+          width: 20px;
+          height: 20px;
+          animation-delay: 0.3s;
+          top: 25px;
+        }
+
+        @keyframes smoke-rise {
+          0% { 
+            opacity: 0.8; 
+            transform: translateY(0) scale(0.5); 
+          }
+          50% { 
+            opacity: 0.5; 
+            transform: translateY(15px) scale(1); 
+          }
+          100% { 
+            opacity: 0; 
+            transform: translateY(30px) scale(1.5); 
+          }
+        }
+
+        /* Falling smoke particles */
+        .rocket-smoke-particle {
+          position: absolute;
+          bottom: 0;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(180,180,180,0.3) 50%, transparent 100%);
+          animation: smoke-fall 1.5s forwards;
+        }
+
+        @keyframes smoke-fall {
+          0% { 
+            opacity: 0.8; 
+            transform: translateY(-50px) scale(0.5); 
+          }
+          30% { 
+            opacity: 0.6; 
+            transform: translateY(0) scale(1); 
+          }
+          100% { 
+            opacity: 0; 
+            transform: translateY(40px) scale(1.8); 
+          }
+        }
+
+        .rocket-wrapper {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .rocket-svg {
+          filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }

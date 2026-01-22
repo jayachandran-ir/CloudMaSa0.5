@@ -14,18 +14,56 @@ export default function ContactUs() {
     message: "",
   });
 
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState<string>("");
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    window.location.href = `mailto:support@cloudmasa.com?subject=Contact%20Us&body=${encodeURIComponent(
-      `Name: ${formData.name}\nCompany: ${formData.company}\nEmail: ${formData.email}\nSource: ${formData.source}\nMessage: ${formData.message}`
-    )}`;
-  };
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
+  setMessage("");
+  setError("");
+
+  try {
+    const res = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/contact-us`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message || "Request failed");
+    }
+
+    setMessage("Message sent successfully ");
+    setFormData({
+      name: "",
+      company: "",
+      email: "",
+      source: "",
+      message: "",
+    });
+  } catch (err) {
+    setError("Failed to submit ");
+    console.error(err);
+  } finally {
+    setLoading(false);
+  }
+};
+
+
 
   return (
     <>
@@ -49,34 +87,31 @@ export default function ContactUs() {
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="flex flex-col justify-center items-center lg:items-start space-y-6 sm:space-y-8"
           >
-            {/* IMAGE */}
             <div className="w-full sm:w-[95%] lg:w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-[#102a43]">
               <img
-                src="/img/cont.jpg"
+                src="/images/cont.jpg"
                 alt="Contact Us"
                 className="w-full h-full object-cover"
               />
             </div>
 
-           {/* CONTACT INFO */}
-<div className="space-y-2 sm:space-y-2 text-sm sm:text-base text-center lg:text-left">
-  <p>
-    <strong className="text-white">Email:</strong>{" "}
-    <span className="text-muted-foreground">support@cloudmasa.com</span>
-  </p>
-  <p>
-    <strong className="text-white">Phone:</strong>{" "}
-    <span className="text-muted-foreground">+91 6364562818</span>
-  </p>
-  <p>
-    <strong className="text-white">Address:</strong>{" "}
-    <span className="text-muted-foreground">
-      Vinayagar Kovil Street,<br />
-      Kurumbapet, Pondicherry-605009
-    </span>
-  </p>
-</div>
-
+            <div className="space-y-2 sm:space-y-2 text-sm sm:text-base text-center lg:text-left">
+              <p>
+                <strong className="text-white">Email:</strong>{" "}
+                <span className="text-muted-foreground">support@cloudmasa.com</span>
+              </p>
+              <p>
+                <strong className="text-white">Phone:</strong>{" "}
+                <span className="text-muted-foreground">+91 63645 62818</span>
+              </p>
+              <p>
+                <strong className="text-white">Address:</strong>{" "}
+                <span className="text-muted-foreground">
+                  Vinayagar Kovil Street,<br />
+                  Kurumbapet, Pondicherry-605 009,India
+                </span>
+              </p>
+            </div>
           </motion.div>
 
           {/* RIGHT SIDE — FORM */}
@@ -86,10 +121,9 @@ export default function ContactUs() {
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="bg-card/70 backdrop-blur-md border border-white/10 rounded-2xl p-4 sm:p-5 lg:p-6 w-full"
           >
-            
             <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-5 lg:mb-6 text-center lg:text-left">
-                  <span className="text-gradient-primary">Let us</span>{' '}
-                  <span className="text-white">connect!</span>
+              <span className="text-gradient-primary">Let us</span>{" "}
+              <span className="text-white">connect!</span>
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
@@ -130,40 +164,43 @@ export default function ContactUs() {
               />
 
               <div className="relative w-full">
-  <motion.select
-    whileFocus={{ scale: 1.02 }}
-    name="source"
-    value={formData.source}
-    onChange={handleChange}
-    required
-    className="w-full rounded-lg bg-background border border-white/10 px-3 py-2 text-sm sm:text-sm md:text-base
-               text-white focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30
-               transition appearance-none pr-10"
-  >
-    {/* Placeholder */}
-    <option value="" disabled selected hidden>
-      How did you hear about us?
-    </option>
+                <motion.select
+                  whileFocus={{ scale: 1.02 }}
+                  name="source"
+                  value={formData.source}
+                  onChange={handleChange}
+                  required
+                  className={`w-full rounded-lg bg-background border border-white/10
+                              px-4 py-3 text-sm
+                              focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30
+                              transition appearance-none pr-10
+                              ${
+                                formData.source
+                                  ? "text-white"
+                                  : "text-muted-foreground"
+                              }`}
+                >
+                  <option value="" disabled hidden>
+                    How did you hear about us?
+                  </option>
+                  <option value="referral" className="text-white">Referral</option>
+                  <option value="social" className="text-white">Social Media</option>
+                  <option value="search" className="text-white">Search Engine</option>
+                  <option value="other" className="text-white">Other</option>
+                </motion.select>
 
-    <option value="referral">Referral</option>
-    <option value="social">Social Media</option>
-    <option value="search">Search Engine</option>
-    <option value="other">Other</option>
-  </motion.select>
-
-  <span className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
-    <svg
-      className="w-4 h-4 text-white"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      viewBox="0 0 24 24"
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-    </svg>
-  </span>
-</div>
-
+                {/* DOWN ARROW */}
+                <svg
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2
+                            h-4 w-4 text-muted-foreground"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
 
               <motion.textarea
                 whileFocus={{ scale: 1.02 }}
@@ -177,16 +214,27 @@ export default function ContactUs() {
                   focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30 transition resize-none"
               />
 
-              {/* ✅ SUBMIT BUTTON: FULL WIDTH MOBILE, original gradient maintained */}
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full sm:w-full md:w-full lg:w-full bg-gradient-cta text-white font-bold py-2.5 rounded-full
-                  hover:opacity-90 transition-all uppercase tracking-wide text-sm"
-              >
-                Submit
+                  disabled={loading || submitted}  // disable while loading or after submit
+                  className={`w-full bg-gradient-cta text-white font-bold py-2.5 rounded-full
+                    transition-all uppercase tracking-wide text-sm
+                    ${submitted ? "opacity-70 cursor-not-allowed" : "hover:opacity-90"}`}
+                >
+                  {loading ? "Submitting..." : submitted ? "Submitted" : "Submit"}
               </motion.button>
+
+              {/* ✅ GREEN CONFIRMATION MESSAGE */}
+              {message && (
+                    <p className="text-xs text-center text-green-500 mt-2">
+                      {message}
+                    </p>
+                  )}
+                  {error && (
+                    <p className="text-xs text-center text-red-500 mt-2">
+                      {error}
+                    </p>
+                  )}
             </form>
           </motion.div>
         </div>
