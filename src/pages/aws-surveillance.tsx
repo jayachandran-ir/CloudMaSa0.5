@@ -5,8 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { AnimatedBackground } from '@/components/AnimatedBackground';
-import SurveillanceShowcase from '@/components/SurveillanceShowcase';
-
+import { FeatureSection } from '@/components/FeatureSection';
 export default function AwsSurveillancePage() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -53,7 +52,7 @@ export default function AwsSurveillancePage() {
               {/* IMAGE */}
               <div className="order-1 lg:order-2 flex justify-center p-3">
                 <img
-                  src="/images/awssurveillance.png"
+                  src="/images/awssurveillance.webp"
                   alt="Multi-Cloud Surveillance Architecture"
                   className="w-full max-h-[260px] sm:max-h-[300px] md:max-h-[340px] object-contain drop-shadow-[0_0_10px_rgba(37,197,230,0.4)]"
                 />
@@ -113,7 +112,7 @@ export default function AwsSurveillancePage() {
         </div>
       </section>
 
-      <SurveillanceShowcase />
+      <FeatureSection />
 
       {/* ================= PROCESS ================= */}
       <section className="py-10 sm:py-12 md:py-16 bg-background">
@@ -198,7 +197,7 @@ export default function AwsSurveillancePage() {
             href="/contact"
             className="inline-block bg-gradient-cta text-white font-bold py-2.5 px-8 rounded-full hover:opacity-90 transition-opacity text-sm uppercase tracking-wider"
           >
-            Get Started
+            Get Free Audit
           </a>
         </div>
       </section>

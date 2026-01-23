@@ -47,7 +47,7 @@ export default function AwsCostOptimizationPage() {
               {/* IMAGE */}
               <div className="order-1 lg:order-2 flex justify-center p-3">
                 <img
-                  src="/images/awscost1.png"
+                  src="/images/awscost1.webp"
                   alt="Cloud Cost Optimization Dashboard"
                   className="w-full max-h-[260px] sm:max-h-[300px] md:max-h-[340px] object-contain drop-shadow-[0_0_10px_rgba(37,197,230,0.4)]"
                 />
@@ -100,7 +100,7 @@ export default function AwsCostOptimizationPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="holographic-card">
-              <img src="/images/savecost.png" alt="Lowered Expenses" />
+              <img src="/images/savecost.webp" alt="Lowered Expenses" />
               <div className="content">
                 <h4 className="text-base font-bold">Lowered Expenses</h4>
                 <p className="text-muted-foreground text-sm">
@@ -110,7 +110,7 @@ export default function AwsCostOptimizationPage() {
             </div>
 
             <div className="holographic-card">
-              <img src="/images/impvisib.png" alt="Improved Visibility" />
+              <img src="/images/impvisib.webp" alt="Improved Visibility" />
               <div className="content">
                 <h4 className="text-base font-bold">Improved Visibility</h4>
                 <p className="text-muted-foreground text-sm">
@@ -120,11 +120,11 @@ export default function AwsCostOptimizationPage() {
             </div>
 
             <div className="holographic-card">
-              <img src="/images/resource.png" alt="Enhanced Efficiency" />
+              <img src="/images/resource.webp" alt="Enhanced Efficiency" />
               <div className="content">
                 <h4 className="text-base font-bold">Enhanced Resource Efficiency</h4>
                 <p className="text-muted-foreground text-sm">
-                  The review will assist you in identifying and optimizing underutilized or idle resources, leading to improved resource efficiency.
+                  The review helps identify and optimize underutilized or idle resources, improving overall resource efficiency.
                 </p>
               </div>
             </div>

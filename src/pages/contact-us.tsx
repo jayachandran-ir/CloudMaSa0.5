@@ -1,9 +1,9 @@
-// src/pages/contact-us.tsx
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
+import { submitContactForm } from "@/lib/api";
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -25,45 +25,31 @@ export default function ContactUs() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setLoading(true);
-  setMessage("");
-  setError("");
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage("");
+    setError("");
 
-  try {
-    const res = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/contact-us`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      }
-    );
+    try {
+      await submitContactForm(formData);
 
-    const data = await res.json();
-
-    if (!res.ok) {
-      throw new Error(data.message || "Request failed");
+      setMessage("Message sent successfully ");
+      setSubmitted(true);
+      setFormData({
+        name: "",
+        company: "",
+        email: "",
+        source: "",
+        message: "",
+      });
+    } catch (err) {
+      setError("Failed to submit ");
+      console.error(err);
+    } finally {
+      setLoading(false);
     }
-
-    setMessage("Message sent successfully ");
-    setFormData({
-      name: "",
-      company: "",
-      email: "",
-      source: "",
-      message: "",
-    });
-  } catch (err) {
-    setError("Failed to submit ");
-    console.error(err);
-  } finally {
-    setLoading(false);
-  }
-};
-
-
+  };
 
   return (
     <>
@@ -78,7 +64,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       <Navbar />
 
       <main className="bg-background text-foreground min-h-screen py-16 lg:py-20 px-4 sm:px-6 lg:px-8 flex justify-center">
-        <div className="container mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+        <div className="container mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mt-16">
 
           {/* LEFT SIDE — IMAGE + CONTACT INFO */}
           <motion.div
@@ -87,29 +73,23 @@ const handleSubmit = async (e: React.FormEvent) => {
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="flex flex-col justify-center items-center lg:items-start space-y-6 sm:space-y-8"
           >
-            <div className="w-full sm:w-[95%] lg:w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-[#102a43]">
+            <div className="w-full sm:w-[95%] lg:w-full aspect-[16/10] rounded-2xl overflow-hidden border border-border bg-secondary">
               <img
-                src="/images/cont.jpg"
+                src="/images/cont.webp"
                 alt="Contact Us"
                 className="w-full h-full object-cover"
               />
             </div>
 
-            <div className="space-y-2 sm:space-y-2 text-sm sm:text-base text-center lg:text-left">
-              <p>
-                <strong className="text-white">Email:</strong>{" "}
-                <span className="text-muted-foreground">support@cloudmasa.com</span>
-              </p>
-              <p>
-                <strong className="text-white">Phone:</strong>{" "}
-                <span className="text-muted-foreground">+91 63645 62818</span>
-              </p>
-              <p>
-                <strong className="text-white">Address:</strong>{" "}
-                <span className="text-muted-foreground">
-                  Vinayagar Kovil Street,<br />
-                  Kurumbapet, Pondicherry-605 009,India
-                </span>
+            <div className="space-y-4 sm:space-y-6 text-center lg:text-left p-4 rounded-xl bg-card/50 backdrop-blur-md border border-border shadow-inner">
+
+                <h3 className="text-xl sm:text-2xl md:text-2xl font-bold tracking-tight leading-tight">
+                  <span className="text-gradient-primary">Let’s</span>{' '}
+                  <span className="text-white">Collaborate!</span>
+                </h3>
+
+              <p className="text-sm sm:text-base text-white italic">
+                “CloudMaSa is your partner in creating scalable, secure, and cost-efficient cloud solutions. Let’s make cloud simple together.”
               </p>
             </div>
           </motion.div>
@@ -119,11 +99,11 @@ const handleSubmit = async (e: React.FormEvent) => {
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="bg-card/70 backdrop-blur-md border border-white/10 rounded-2xl p-4 sm:p-5 lg:p-6 w-full"
+            className="bg-card/70 backdrop-blur-md border border-border rounded-2xl p-4 sm:p-5 lg:p-6 w-full"
           >
             <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-5 lg:mb-6 text-center lg:text-left">
               <span className="text-gradient-primary">Let us</span>{" "}
-              <span className="text-white">connect!</span>
+              <span className="text-foreground">connect!</span>
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
@@ -135,7 +115,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full rounded-lg bg-background border border-white/10 px-3 py-2 text-sm
+                className="w-full rounded-lg bg-background border border-border px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground
                   focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30 transition"
               />
 
@@ -147,7 +127,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 value={formData.company}
                 onChange={handleChange}
                 required
-                className="w-full rounded-lg bg-background border border-white/10 px-3 py-2 text-sm
+                className="w-full rounded-lg bg-background border border-border px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground
                   focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30 transition"
               />
 
@@ -159,7 +139,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full rounded-lg bg-background border border-white/10 px-3 py-2 text-sm
+                className="w-full rounded-lg bg-background border border-border px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground
                   focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30 transition"
               />
 
@@ -170,29 +150,25 @@ const handleSubmit = async (e: React.FormEvent) => {
                   value={formData.source}
                   onChange={handleChange}
                   required
-                  className={`w-full rounded-lg bg-background border border-white/10
-                              px-4 py-3 text-sm
-                              focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30
-                              transition appearance-none pr-10
-                              ${
-                                formData.source
-                                  ? "text-white"
-                                  : "text-muted-foreground"
-                              }`}
+                  className={`w-full rounded-lg bg-background border border-border
+                    px-4 py-3 text-sm
+                    focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30
+                    transition appearance-none pr-10
+                    ${formData.source ? "text-foreground" : "text-muted-foreground"}`}
                 >
                   <option value="" disabled hidden>
                     How did you hear about us?
                   </option>
-                  <option value="referral" className="text-white">Referral</option>
-                  <option value="social" className="text-white">Social Media</option>
-                  <option value="search" className="text-white">Search Engine</option>
-                  <option value="other" className="text-white">Other</option>
+                  <option value="referral" className="text-foreground bg-background">Referral</option>
+                  <option value="social" className="text-foreground bg-background">Social Media</option>
+                  <option value="search" className="text-foreground bg-background">Search Engine</option>
+                  <option value="other" className="text-foreground bg-background">Other</option>
                 </motion.select>
 
                 {/* DOWN ARROW */}
                 <svg
                   className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2
-                            h-4 w-4 text-muted-foreground"
+                    h-4 w-4 text-muted-foreground"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth={2}
@@ -210,31 +186,31 @@ const handleSubmit = async (e: React.FormEvent) => {
                 onChange={handleChange}
                 required
                 rows={4}
-                className="w-full rounded-lg bg-background border border-white/10 px-3 py-2 text-sm
+                className="w-full rounded-lg bg-background border border-border px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground
                   focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30 transition resize-none"
               />
 
               <motion.button
                 type="submit"
-                  disabled={loading || submitted}  // disable while loading or after submit
-                  className={`w-full bg-gradient-cta text-white font-bold py-2.5 rounded-full
-                    transition-all uppercase tracking-wide text-sm
-                    ${submitted ? "opacity-70 cursor-not-allowed" : "hover:opacity-90"}`}
-                >
-                  {loading ? "Submitting..." : submitted ? "Submitted" : "Submit"}
+                disabled={loading || submitted}
+                className={`w-full bg-gradient-cta text-white font-bold py-2.5 rounded-full
+                  transition-all uppercase tracking-wide text-sm
+                  ${submitted ? "opacity-70 cursor-not-allowed" : "hover:opacity-90"}`}
+              >
+                {loading ? "Submitting..." : submitted ? "Submitted" : "Submit"}
               </motion.button>
 
               {/* ✅ GREEN CONFIRMATION MESSAGE */}
               {message && (
-                    <p className="text-xs text-center text-green-500 mt-2">
-                      {message}
-                    </p>
-                  )}
-                  {error && (
-                    <p className="text-xs text-center text-red-500 mt-2">
-                      {error}
-                    </p>
-                  )}
+                <p className="text-xs text-center text-green-500 mt-2">
+                  {message}
+                </p>
+              )}
+              {error && (
+                <p className="text-xs text-center text-red-500 mt-2">
+                  {error}
+                </p>
+              )}
             </form>
           </motion.div>
         </div>

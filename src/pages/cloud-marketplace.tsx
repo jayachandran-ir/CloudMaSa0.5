@@ -50,7 +50,7 @@ export default function CloudMarketplacePage() {
               {/* IMAGE */}
               <div className="order-1 lg:order-2 flex justify-center p-3">
                 <img
-                  src="/images/cloudmarketplace.png"
+                  src="/images/cloudmarketplace.webp"
                   alt="Cloud Marketplace"
                   className="w-full max-h-[260px] sm:max-h-[300px] md:max-h-[340px] object-contain drop-shadow-[0_0_10px_rgba(37,197,230,0.4)]"
                 />
@@ -177,7 +177,7 @@ export default function CloudMarketplacePage() {
             href="/contact"
             className="inline-block bg-gradient-cta text-white font-bold py-2.5 px-8 rounded-full hover:opacity-90 transition-opacity text-sm uppercase tracking-wider"
           >
-            Get Started
+            Get Free Audit
           </a>
         </div>
       </section>

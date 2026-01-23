@@ -5,10 +5,10 @@ import { StatsGrid } from '@/components/StatsGrid';
 import { WhyChooseUs } from '@/components/WhyChooseUs';
 import { HostingFeatures } from '@/components/HostingFeatures';
 import { Testimonials } from '@/components/Testimonials';
-import { FeatureSection } from '@/components/FeatureSection';
 import { CloudMasaApp } from '@/components/CloudMasaApp';
 import { Footer } from '@/components/Footer';
 import TrustedByTicker from '@/components/TrustedByTicker';
+import SurveillanceShowcase from '@/components/SurveillanceShowcase';
 
 const Index = () => {
   return (
@@ -29,8 +29,8 @@ const Index = () => {
 
       <Testimonials />
 
-      <FeatureSection />
-
+      <SurveillanceShowcase />
+  
       <HostingFeatures />
 
       <Footer />

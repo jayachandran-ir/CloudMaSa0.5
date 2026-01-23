@@ -10,7 +10,7 @@ const marketplaceItems = [
       "Architecture compatibility checks",
       "License model analysis",
     ],
-    image: "/images/vendor.png",
+    image: "/images/vendor.webp",
   },
   {
     title: "Marketplace Procurement",
@@ -21,7 +21,7 @@ const marketplaceItems = [
       "Contract & renewal alignment",
       "Procurement governance",
     ],
-    image: "/images/mar.png",
+    image: "/images/mar.webp",
   },
   {
     title: "Secure Deployment",
@@ -32,7 +32,7 @@ const marketplaceItems = [
       "Secure onboarding",
       "Operational readiness validation",
     ],
-    image: "/images/secc.png",
+    image: "/images/secc.webp",
   },
   {
     title: "Cost & Usage Optimization",
@@ -43,7 +43,7 @@ const marketplaceItems = [
       "Cost anomaly detection",
       "Continuous optimization cycles",
     ],
-    image: "/images/costt.png",
+    image: "/images/costt.webp",
   },
 ];
 

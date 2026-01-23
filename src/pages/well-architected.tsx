@@ -54,7 +54,7 @@ export default function WellArchitected() {
               {/* IMAGE */}
               <div className="order-1 lg:order-2 flex justify-center p-3">
                 <img
-                  src="/images/well-arch.png"
+                  src="/images/well-arch.webp"
                   alt="cloud Well-Architected Framework"
                   className="w-full max-h-[260px] sm:max-h-[300px] md:max-h-[340px] object-contain drop-shadow-[0_0_10px_rgba(37,197,230,0.4)]"
                 />

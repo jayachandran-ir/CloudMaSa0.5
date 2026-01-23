@@ -50,12 +50,12 @@ export default function WellArchitectedPillars() {
   }, [])
 
   const pillars = [
-    { title: "Operational Efficiency", img: "/images/operation.png" },
-    { title: "Security", img: "/images/sec.png" },
-    { title: "Reliability", img: "/images/reli.png" },
-    { title: "Performance Efficiency", img: "/images/perfo.png" },
-    { title: "Cost Optimization", img: "/images/cost.png" },
-    { title: "Sustainability", img: "/images/sus.png" },
+    { title: "Operational Efficiency", img: "/images/operation.webp" },
+    { title: "Security", img: "/images/sec.webp" },
+    { title: "Reliability", img: "/images/reli.webp" },
+    { title: "Performance Efficiency", img: "/images/perfo.webp" },
+    { title: "Cost Optimization", img: "/images/cost.webp" },
+    { title: "Sustainability", img: "/images/sus.webp" },
   ]
 
   const cardPos = [
@@ -88,7 +88,7 @@ export default function WellArchitectedPillars() {
           >
             {/* cloud CORE */}
             <img
-              src="/images/aws.png"
+              src="/images/aws.webp"
               alt="cloud Core"
               onMouseEnter={() => setCoreHover(true)}
               onMouseLeave={() => setCoreHover(false)}
@@ -143,7 +143,7 @@ export default function WellArchitectedPillars() {
             {[
               {
                 title: "Operational Efficiency",
-                desc: "Operational Efficiency focuses on running and monitoring systems with minimal manual intervention. It emphasizes automation, streamlined processes, and operational visibility. Teams can quickly detect issues, respond to events, and improve workflows. This pillar enables continuous improvement and faster innovation."
+                desc: "Operational Efficiency focuses on running and monitoring systems with minimal manual intervention. It emphasizes automation, streamlined processes, and operational visibility. Teams can quickly detect issues and  improve workflows. This pillar enables continuous improvement and faster innovation."
               },
               {
                 title: "Security",

@@ -10,73 +10,84 @@ const app = express();
 app.use(express.json());
 
 // FIXED: Allow all origins in development, specific origins in production
-app.use(cors({
-  origin: function(origin, callback) {
-    // Allow requests with no origin (mobile apps, curl, etc.)
-    if (!origin) return callback(null, true);
-    
-    const allowedOrigins = [
-      "http://localhost:8080",
-      "http://localhost:5173",
-      "http://localhost:3000",
-      "https://offerbunch.in",
-      "https://www.offerbunch.in",
-      "https://api.offerbunch.in"
-    ];
-    
-    // Allow any lovable.app preview URLs
-    if (origin.includes("lovable.app") || allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
-    
-    callback(null, true); // Allow all for development
-  },
-  methods: ["GET", "POST", "OPTIONS"],
-  allowedHeaders: ["Content-Type"],
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin (mobile apps, curl, etc.)
+      if (!origin) return callback(null, true);
 
-mongoose.connect(process.env.MONGO_URL)
+      const allowedOrigins = [
+        "http://localhost:8080",
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "https://offerbunch.in",
+        "https://www.offerbunch.in",
+        "https://api.offerbunch.in",
+      ];
+
+      // Allow any lovable.app preview URLs
+      if (origin.includes("lovable.app") || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      callback(null, true); // Allow all for development
+    },
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+    credentials: true,
+  })
+);
+
+// MongoDB connection
+mongoose
+  .connect(process.env.MONGO_URL)
   .then(() => console.log("✅ Connected to MongoDB"))
-  .catch(err => console.error("❌ MongoDB connection error:", err));
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
+// Nodemailer transporter
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST,
   port: Number(process.env.EMAIL_PORT),
   secure: true,
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
+    pass: process.env.EMAIL_PASS,
+  },
 });
 
-transporter.verify(err => {
+transporter.verify((err) => {
   if (err) console.error("❌ SMTP ERROR:", err);
   else console.log("✅ SMTP Ready");
 });
 
-const bookingSchema = new mongoose.Schema({
-  name: String,
-  company: String,
-  email: String,
-  phone: String,
-  date: String,
-  time: String
-}, { timestamps: true });
-
+// MongoDB Schemas
+const bookingSchema = new mongoose.Schema(
+  {
+    name: String,
+    company: String,
+    email: String,
+    phone: String,
+    date: String,
+    time: String,
+  },
+  { timestamps: true }
+);
 bookingSchema.index({ email: 1, date: 1 }, { unique: true });
 const Booking = mongoose.model("Booking", bookingSchema);
 
-const contactSchema = new mongoose.Schema({
-  name: String,
-  company: String,
-  email: String,
-  source: String,
-  message: String
-}, { timestamps: true });
-
+const contactSchema = new mongoose.Schema(
+  {
+    name: String,
+    company: String,
+    email: String,
+    source: String,
+    message: String,
+  },
+  { timestamps: true }
+);
 const Contact = mongoose.model("Contact", contactSchema);
 
+// ======================== FREE CONSULTATION ========================
 app.post("/api/free-consultation", async (req, res) => {
   try {
     const { name, company, email, phone, date, time } = req.body;
@@ -87,50 +98,87 @@ app.post("/api/free-consultation", async (req, res) => {
 
     await Booking.create({ name, company, email, phone, date, time });
 
+    // Send emails to admin and user
     await Promise.all([
+      // Admin email
       transporter.sendMail({
         from: `"CloudMaSa Booking" <${process.env.EMAIL_USER}>`,
         to: process.env.EMAIL_USER,
         subject: "📅 New Free Consultation Booking",
-        html: `<h2>New Consultation</h2><p><b>Name:</b> ${name}</p><p><b>Company:</b> ${company}</p><p><b>Email:</b> ${email}</p><p><b>Phone:</b> ${phone}</p><p><b>Date:</b> ${date}</p><p><b>Time:</b> ${time}</p>`
+        html: `
+          <h2>New Consultation Booking</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Company:</strong> ${company}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>Date:</strong> ${date}</p>
+          <p><strong>Time:</strong> ${time}</p>
+        `,
       }),
+
+      // User confirmation email
       transporter.sendMail({
         from: `"CloudMaSa Team" <${process.env.EMAIL_USER}>`,
         to: email,
-        subject: "✅ Free Consultation Confirmed",
-        html: `<p>Hi ${name},</p><p>Your free consultation is confirmed.</p><p><b>Date:</b> ${date}</p><p><b>Time:</b> ${time}</p><p>— CloudMaSa Team</p>`
-      })
+        subject: "✅ Your Free Consultation is Confirmed",
+        html: `
+          <p>Hi ${name},</p>
+          <p>Thank you for booking a free consultation with CloudMaSa.</p>
+          <p><strong>Date:</strong> ${date}</p>
+          <p><strong>Time:</strong> ${time}</p>
+          <p>We look forward to speaking with you!</p>
+          <p>— CloudMaSa Team</p>
+        `,
+      }),
     ]);
 
     res.status(200).json({ message: "Consultation booked successfully" });
   } catch (err) {
     if (err.code === 11000) {
-      return res.status(409).json({ message: "You already booked a consultation for this date" });
+      return res
+        .status(409)
+        .json({ message: "You already booked a consultation for this date" });
     }
     console.error("Free Consultation Error:", err);
     res.status(500).json({ message: "Server error" });
   }
 });
 
+// ======================== CONTACT US ========================
 app.post("/api/contact-us", async (req, res) => {
   try {
     const { name, company, email, source, message } = req.body;
 
     await Contact.create({ name, company, email, source, message });
 
+    // Send emails to admin and user
     await Promise.all([
+      // Admin email
       transporter.sendMail({
         from: `"CloudMaSa Contact" <${process.env.EMAIL_USER}>`,
         to: process.env.EMAIL_USER,
         subject: "📩 New Contact Request",
-        html: `<h2>New Contact</h2><p><b>Name:</b> ${name}</p><p><b>Company:</b> ${company}</p><p><b>Email:</b> ${email}</p><p><b>Source:</b> ${source}</p><p><b>Message:</b> ${message}</p>`
+        html: `
+          <h2>New Contact Request</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Company:</strong> ${company}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Source:</strong> ${source}</p>
+          <p><strong>Message:</strong> ${message}</p>
+        `,
       }),
+
+      // User confirmation email
       transporter.sendMail({
         from: `"CloudMaSa Team" <${process.env.EMAIL_USER}>`,
         to: email,
-        subject: "✅ We received your message",
-        html: `<p>Thank you ${name}, we will contact you shortly.</p>`
-      })
+        subject: "✅ We Received Your Message",
+        html: `
+          <p>Hi ${name},</p>
+          <p>Thank you for contacting CloudMaSa. We have received your message and will get back to you shortly.</p>
+          <p>— CloudMaSa Team</p>
+        `,
+      }),
     ]);
 
     res.status(200).json({ message: "Message sent successfully" });
@@ -140,5 +188,6 @@ app.post("/api/contact-us", async (req, res) => {
   }
 });
 
+// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Backend running on port ${PORT}`));

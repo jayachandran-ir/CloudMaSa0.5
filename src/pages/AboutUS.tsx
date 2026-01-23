@@ -59,7 +59,7 @@ export default function AboutUS() {
 
             <div className="w-full max-h-[320px] rounded-xl overflow-hidden border border-white/10">
               <img
-                src="/images/13569.jpg"
+                src="/images/13569.webp"
                 alt="Cloud Operations"
                 className="w-full h-full object-cover"
               />
@@ -73,7 +73,7 @@ export default function AboutUS() {
 
             <div className="w-full max-h-[320px] rounded-xl overflow-hidden border border-white/10">
               <img
-                src="/images/139704.jpg"
+                src="/images/139704.webp"
                 alt="Our Vision"
                 className="w-full h-full object-cover"
               />
@@ -181,7 +181,7 @@ export default function AboutUS() {
                   <div className="relative rounded-xl overflow-hidden max-h-[260px]">
                     <div className="absolute inset-0 bg-gradient-to-t from-blue-500/60 to-transparent z-10" />
                     <img
-                      src="/images/397057724_11539820.png"
+                      src="/images/397057724_11539820.webp"
                       alt={name}
                       className="w-full h-full object-cover"
                     />
