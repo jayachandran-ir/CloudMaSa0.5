@@ -29,7 +29,7 @@ const testimonials = [
     role: "CEO HIGGINS",
     text: "Our experience with CloudMaSa has been nothing short of excellent. Their cloud solutions provided the security and scalability we needed.",
     avatar: "sir",
-    companylogo: "",
+    companylogo: "higgins.png",
   },
   {
     name: "Praveen Dinavahi",

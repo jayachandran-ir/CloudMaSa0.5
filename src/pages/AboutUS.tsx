@@ -29,9 +29,7 @@ export default function AboutUS() {
             </h1>
 
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-              CloudMaSa is a cloud-focused technology partner helping organizations
-              design, secure, optimize, and scale cloud environments across AWS,
-              Azure, and GCP.
+              CloudMaSa is a unified DevOps and cloud management platform designed to simplify infrastructure operations. We help teams automate deployments, manage resources, enhance security, and streamline workflows from a single dashboard. Our mission is to empower businesses with scalable, reliable, and secure cloud solutions for faster and smarter digital growth.
             </p>
           </div>
         </section>

@@ -19,6 +19,7 @@ import CloudMarketplacePage from "./pages/cloud-marketplace";
 import AboutUS from "./pages/AboutUS";
 import ContactUs from "./pages/contact-us";
 import FreeConsultation from "./pages/free-consultation"; 
+import Pricing from "./pages/pricing";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -83,6 +84,12 @@ export default function App() {
                 path="/free-consultation"
                 element={<FreeConsultation />}
               />
+              {/* ✅ PRICING PAGE */}
+              <Route
+                path="/pricing"
+                element={<Pricing />}
+              />
+
 
               <Route path="*" element={<NotFound />} />
             </Routes>

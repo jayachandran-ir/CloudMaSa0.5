@@ -42,11 +42,10 @@ export function Footer() {
               </a>
 
               <a
-                href="https://www.google.com/maps/place/CloudMaSa+Technologies+Private+Ltd/@11.9397093,79.7688992,17z"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-2 text-[11px] text-muted-foreground hover:text-brand-orange transition-colors"
-              >
+                  href="https://www.google.com/maps/place/CloudMaSa+Technologies+Private+Ltd/@11.9397093,79.7714795,17z/data=!3m1!4b1!4m6!3m5!1s0x3a536117bba53c2d:0x7466a34e978c899b!8m2!3d11.9397093!4d79.7714795!16s%2Fg%2F11wvbgz1gk?entry=ttu&g_ep=EgoyMDI2MDEyMS4wIKXMDSoASAFQAw%3D%3D"
+                  className="flex items-start gap-2 text-[11px] text-muted-foreground hover:text-brand-orange transition-colors"
+                >
+
                 <MapPin className="w-3 h-3 mt-0.5 flex-shrink-0" />
                 <span>
                   Vinayagar Kovil Street,<br />
@@ -104,14 +103,16 @@ export function Footer() {
 
             <ul className="space-y-1.5">
               <li>
-                <Link to="/blog" className="text-muted-foreground hover:text-foreground transition-colors text-[11px]">
-                  Blog
-                </Link>
+                
               </li>
               <li>
-                <Link to="/docs" className="text-muted-foreground hover:text-foreground transition-colors text-[11px]">
+               <a
+                  href="https://www.docs.cloudmasa.com/"
+                  className="text-muted-foreground hover:text-foreground transition-colors text-[11px]"
+                >
                   Documentation
-                </Link>
+                </a>
+
               </li>
             </ul>
           </div>
